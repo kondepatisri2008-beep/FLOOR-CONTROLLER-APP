@@ -21,11 +21,10 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '8.2'
 
-      - name: Generate Gradle Wrapper
-        run: gradle wrapper
-
-      - name: Grant Execute Permission for Gradlew
+      - name: Make gradlew executable
         run: chmod +x gradlew
 
       - name: Build Debug APK
