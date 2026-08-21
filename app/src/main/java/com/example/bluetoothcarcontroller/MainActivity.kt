@@ -17,17 +17,18 @@ class MainActivity : AppCompatActivity() {
 
     private val bluetoothAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
     private val PERMISSION_REQUEST_CODE = 101
+    private lateinit var tvStatus: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val btnConnect = findViewById<Button>(R.id.btnConnect)
-        val tvStatus = findViewById<TextView>(R.id.tvStatus)
+        tvStatus = findViewById(R.id.tvStatus)
 
         btnConnect.setOnClickListener {
             if (checkAndRequestPermissions()) {
-                showPairedDevices(tvStatus)
+                showPairedDevices()
             }
         }
     }
@@ -55,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    private fun showPairedDevices(tvStatus: TextView) {
+    private fun showPairedDevices() {
         if (bluetoothAdapter == null) {
             Toast.makeText(this, "Bluetooth not supported on this device", Toast.LENGTH_SHORT).show()
             return
@@ -85,8 +86,7 @@ class MainActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == PERMISSION_REQUEST_CODE && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            val tvStatus = findViewById<TextView>(R.id.tvStatus)
-            showPairedDevices(tvStatus)
+            showPairedDevices()
         } else {
             Toast.makeText(this, "Bluetooth permissions required", Toast.LENGTH_SHORT).show()
         }
