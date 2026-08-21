@@ -4,15 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="24dp">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bluetooth Car Controller"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="30dp" />
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/tvStatus"
@@ -20,12 +12,55 @@
         android:layout_height="wrap_content"
         android:text="Status: Not Connected"
         android:textSize="18sp"
-        android:layout_marginBottom="25dp" />
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp" />
 
     <Button
         android:id="@+id/btnConnect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CONNECT TO HC-05" />
+        android:text="CONNECT TO HC-05"
+        android:layout_marginBottom="30dp" />
+
+    <!-- Directional Control Buttons -->
+    <Button
+        android:id="@+id/btnForward"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="FORWARD" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <Button
+            android:id="@+id/btnLeft"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="LEFT" />
+
+        <Button
+            android:id="@+id/btnStop"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="STOP"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp" />
+
+        <Button
+            android:id="@+id/btnRight"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="RIGHT" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnBackward"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="BACKWARD" />
 
 </LinearLayout>
