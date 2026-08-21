@@ -32,6 +32,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val btnConnect = findViewById<Button>(R.id.btnConnect)
+        val btnForward = findViewById<Button>(R.id.btnForward)
+        val btnBackward = findViewById<Button>(R.id.btnBackward)
+        val btnLeft = findViewById<Button>(R.id.btnLeft)
+        val btnRight = findViewById<Button>(R.id.btnRight)
+        val btnStop = findViewById<Button>(R.id.btnStop)
         tvStatus = findViewById(R.id.tvStatus)
 
         btnConnect.setOnClickListener {
@@ -39,6 +44,12 @@ class MainActivity : AppCompatActivity() {
                 connectToHC05()
             }
         }
+
+        btnForward.setOnClickListener { sendCommand("F") }
+        btnBackward.setOnClickListener { sendCommand("B") }
+        btnLeft.setOnClickListener { sendCommand("L") }
+        btnRight.setOnClickListener { sendCommand("R") }
+        btnStop.setOnClickListener { sendCommand("S") }
     }
 
     private fun checkAndRequestPermissions(): Boolean {
@@ -94,11 +105,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun sendCommand(command: String) {
+    private fun sendCommand(command: String) {
         try {
             outputStream?.write(command.toByteArray())
         } catch (e: IOException) {
-            Toast.makeText(this, "Error sending data", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Error sending command", Toast.LENGTH_SHORT).show()
         }
     }
 
